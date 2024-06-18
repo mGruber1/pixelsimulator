@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+#world {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: grey;
+  height: 500px;
+  width: 500px;
+}
+
+.player {
+  background-color: green;
+}
+
+.enemy {
+  background-color: blue;
+}
+
+.neutral {
+  background-color: darkgrey;
+}
