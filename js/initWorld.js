@@ -87,29 +87,13 @@ const setPlayerPosition = (direction, worldMap) => {
   }
 };
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "s") {
-    setPlayerPosition("down", worldMap);
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "w") {
-    setPlayerPosition("up", worldMap);
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "a") {
-    setPlayerPosition("left", worldMap);
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "d") {
-    setPlayerPosition("right", worldMap);
-  }
-});
+const setControls = (eventName, key, direction, worldMap) => {
+  document.addEventListener(eventName, (event) => {
+    if (event.key === key) {
+      setPlayerPosition(direction, worldMap);
+    }
+  });
+};
 
 const countEnemies = (worldMap, enemyCount) => {
   for (let row = 0; row < tilesPerRow; row++) {
@@ -125,6 +109,10 @@ const countEnemies = (worldMap, enemyCount) => {
 initWorldMap(worldMap);
 renderWorld(worldMap);
 
+setControls("keydown", "w", "up", worldMap);
+setControls("keydown", "s", "down", worldMap);
+setControls("keydown", "a", "left", worldMap);
+setControls("keydown", "d", "right", worldMap);
 intervalId = setInterval(() => {
   if (countEnemies(worldMap, enemyCount) === 0) {
     alert("GAME WON!");
